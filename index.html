@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico Interativo - Design Gráfico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- SEÇÃO CSS (ESTILO) --- */
+        :root {
+            --primary-pink: #E91E63;
+            --light-pink: #F8BBD0;
+            --dark-gray: #333;
+            --medium-gray: #666;
+            --light-gray: #f5f5f5;
+            --white: #fff;
+            --cyan: #00BCD4;
+            --green: #4CAF50;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+        }
+
+        h1, h2, h3 { margin-top: 0; color: var(--white); }
+        p { margin-top: 0; line-height: 1.6; }
+        
+        a.info-link { 
+            color: var(--primary-pink); 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 0.9em; 
+        }
+
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+
+        /* Cabeçalho Ajustado para Imagem Lateral */
+        header {
+            background-color: var(--primary-pink);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        header .text-content { flex: 1; }
+        header h1 { font-size: 2.2em; margin-bottom: 5px; font-weight: normal; }
+        header h2 { font-size: 3.5em; margin-bottom: 20px; line-height: 1.1; }
+        header p.subtitle { font-size: 1.3em; opacity: 0.9; }
+
+        header .header-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        header .header-image img {
+            max-width: 100%;
+            height: auto;
+            /* Se quiser que a imagem "flutue" um pouco como no original */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+        }
+
+        /* Seção 1 (Card com Gradiente) */
+        .section-1 { margin-top: -60px; margin-bottom: 50px; }
+        .tile-card {
+            display: flex; 
+            background-color: var(--white);
+            border-radius: 10px; 
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .tile-card .image-block {
+            flex: 1; 
+            background: linear-gradient(135deg, var(--green), var(--cyan));
+            padding: 40px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+        }
+        .tile-card .image-block img { max-width: 100%; height: auto; }
+        .tile-card .text-block { flex: 1; padding: 40px; }
+        .tile-card h3 { color: var(--dark-gray); margin-bottom: 15px; }
+        .tile-card p { color: var(--medium-gray); margin-bottom: 20px; }
+
+        /* Seção 2 (Três Ícones Circulares) */
+        .section-2 { margin-bottom: 60px; }
+        .icons-grid { display: flex; justify-content: space-between; gap: 30px; }
+        .icon-card { flex: 1; text-align: center; }
+        .icon-circle {
+            width: 140px; height: 140px; border-radius: 50%;
+            margin: 0 auto 20px auto; display: flex;
+            justify-content: center; align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .icon-circle.pink { background-color: #fce4ec; border: 4px solid #f8bbd0; }
+        .icon-circle.purple { background-color: #f3e5f5; border: 4px solid #e1bee7; }
+        .icon-circle.yellow { background-color: #fff9c4; border: 4px solid #fff59d; }
+        .icon-circle img { max-width: 60%; }
+        .icon-card h3 { color: var(--dark-gray); font-size: 1.2em; margin-bottom: 10px; }
+        .icon-card p.subtitle { color: var(--medium-gray); font-size: 0.95em; margin-bottom: 15px; }
+
+        /* Blocos Alternados com Texto Justificado */
+        .section-alternating { margin-bottom: 60px; }
+        .alt-tile { display: flex; align-items: center; gap: 50px; margin-bottom: 40px; }
+        .alt-tile.reverse { flex-direction: row-reverse; }
+        .alt-image { flex: 1; display: flex; justify-content: center; }
+        .alt-image img { max-width: 300px; width: 100%; height: auto; }
+        .alt-text { flex: 1; }
+        .alt-text h3 { color: var(--dark-gray); font-size: 1.8em; margin-bottom: 15px; }
+        .alt-text p { 
+            color: var(--medium-gray); 
+            font-size: 1.05em; 
+            margin-bottom: 15px; 
+            text-align: justify;
+        }
+
+        /* Seção 3 (Card Final) */
+        .section-3 { margin-bottom: 50px; }
+        .final-card {
+            display: flex; background-color: var(--white);
+            border-radius: 10px; overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .final-card .text-block { flex: 1; padding: 40px; }
+        .final-card h3 { color: var(--dark-gray); margin-bottom: 15px; }
+        .final-card p { color: var(--medium-gray); }
+        .final-card .image-block {
+            flex: 1; background-color: var(--light-pink);
+            display: flex; justify-content: center; align-items: center; padding: 20px;
+        }
+        .final-card .image-block img { max-width: 80%; }
+
+        /* Rodapé */
+        footer { background-color: var(--primary-pink); color: var(--white); padding: 30px 0; }
+        footer .container { display: flex; justify-content: space-between; align-items: center; }
+        footer .powered-by { display: flex; align-items: center; gap: 10px; }
+        footer .powered-by img { height: 25px; }
+        footer .social-icons { display: flex; gap: 15px; }
+        footer .social-icons a { color: var(--white); font-size: 1.2em; }
+
+        /* Ajustes de Responsividade */
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; text-align: center; }
+            header .header-image { justify-content: center; margin-top: 30px; }
+            .tile-card, .final-card, .alt-tile, .alt-tile.reverse { flex-direction: column; text-align: center; }
+            .icons-grid { flex-direction: column; align-items: center; }
+            .alt-text p { text-align: center; }
+            footer .container { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="text-content">
+                <h1>Da expressão visual à experiência digital</h1>
+                <h2>Design Gráfico</h2>
+                <p class="subtitle">Como o design molda a comunicação visual no mundo moderno.</p>
+            </div>
+            <div class="header-image">
+                <!-- Coloque aqui o link da imagem do notebook/pessoas -->
+                <img src="images/imagemtopo.png" alt="Ilustração Cabeçalho">
+            </div>
+        </div>
+    </header>
+
+
+<!-- Seção do Card -->
+<section class="section-1">
+    <div class="container">
+        <div class="tile-card">
+            <div class="image-block">
+                <img src="images/3.png" alt="Lupa">
+            </div>
+            <div class="text-block">
+                <h3>Muito Além da Estética</h3>
+                <p>O design gráfico está presente em marcas, aplicativos e redes sociais. Mais do que estética, ele transforma ideias em comunicação visual por meio da criatividade e da tecnologia.</p>
+                
+                <!-- Botão com sua classe original -->
+                <a href="#" class="info-link" id="abrirGenially">+ info</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Estrutura do Modal Corrigida -->
+<div id="modalOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;">
+    
+    <!-- Container do Conteúdo (Impedimos o fechamento ao clicar aqui dentro) -->
+    <div id="modalConteudo" style="position: relative; width: 90%; max-width: 1000px; height: 80vh; background: white; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+        
+        <iframe src="https://www.youtube.com/watch?v=bWdfTkuFqCM" 
+                style="width: 100%; height: 100%; border: none;" 
+                allowfullscreen="true">
+        </iframe>
+        
+    </div>
+</div>
+
+<script>
+    const overlay = document.getElementById("modalOverlay");
+    const btnAbrir = document.getElementById("abrirGenially");
+
+    // Abrir modal
+    btnAbrir.onclick = function(e) {
+        e.preventDefault();
+        overlay.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Trava o scroll do site ao abrir
+    }
+
+    // Fechar ao clicar no overlay (fundo escuro)
+    overlay.onclick = function(event) {
+        if (event.target === overlay) {
+            fecharModal();
+        }
+    }
+
+    function fecharModal() {
+        overlay.style.display = "none";
+        document.body.style.overflow = "auto"; // Libera o scroll
+    }
+
+    // Fechar com a tecla Esc
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" && overlay.style.display === "flex") {
+            fecharModal();
+        }
+    });
+</script>
+
+<section class="section-alternating">
+    <div class="container">
+        <div class="alt-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h3>Estratégia Visual Integrada</h3>
+            <p>O design gráfico contemporâneo une técnica e sensibilidade para transformar conceitos abstratos em soluções visíveis e funcionais. Através da aplicação rigorosa de hierarquia, contraste e equilíbrio, conseguimos converter dados complexos em experiências de comunicação acessíveis, garantindo que a mensagem final seja não apenas vista, mas compreendida e memorável para o público-alvo.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+    <section class="section-2">
+        <div class="container">
+            <div class="icons-grid">
+                <div class="icon-card">
+                    <div class="icon-circle pink">
+                        <img src="https://via.placeholder.com/80x80/fce4ec/E91E63?text=IMGS" alt="Img">
+                    </div>
+                    <h3>Comunicação eficiente</h3>
+                    <p class="subtitle">transforma ideias complexas em mensagens visuais claras.</p>
+                    <a href="#" class="info-link">+ info</a>
+                </div>
+                <div class="icon-card">
+                    <div class="icon-circle purple">
+                        <img src="https://via.placeholder.com/80x80/f3e5f5/9C27B0?text=PC" alt="PC">
+                    </div>
+                    <h3>Presença no cotidiano</h3>
+                    <p class="subtitle">Ele está em aplicativos, redes sociais, embalagens e publicidade.</p>
+                    <a href="#" class="info-link">+ info</a>
+                </div>
+                <div class="icon-card">
+                    <div class="icon-circle yellow">
+                        <img src="https://via.placeholder.com/80x80/fff9c4/FFC107?text=CLICK" alt="Click">
+                    </div>
+                    <h3>Influência digital</h3>
+                    <p class="subtitle">Impacto no comportamento.</p>
+                    <a href="#" class="info-link">+ info</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-alternating">
+        <div class="container">
+            <div class="alt-tile">
+                <div class="alt-image">
+                    <img src="https://via.placeholder.com/300x250/eee/333?text=Tile+1" alt="Imagem Esquerda">
+                </div>
+                <div class="alt-text">
+                    <h3>Inovação Visual</h3>
+                    <p>O processo de inovação no design gráfico exige uma compreensão profunda do público-alvo. Através de elementos visuais harmoniosos, conseguimos guiar o olhar do usuário e destacar o que realmente importa.</p>
+                    <a href="#" class="info-link">+ info</a>
+                </div>
+            </div>
+
+            <div class="alt-tile reverse">
+                <div class="alt-image">
+                    <img src="https://via.placeholder.com/300x250/eee/333?text=Tile+1" alt="Imagem Direita">
+                </div>
+                <div class="alt-text">
+                    <h3>Processo Criativo</h3>
+                    <p>Desde o esboço inicial até a finalização digital, cada etapa é crucial para garantir que a funcionalidade não seja sacrificada pela estética. O equilíbrio define o sucesso de uma comunicação visual.</p>
+                    <a href="#" class="info-link">+ info</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-3">
+        <div class="container">
+            <div class="final-card">
+                <div class="text-block">
+                    <h3>Conclusão e Futuro</h3>
+                    <p>A evolução continua. Do papel às telas de alta definição, o design gráfico permanece como a ponte essencial entre a ideia e a compreensão humana.</p>
+                    <a href="#" class="info-link">+ info</a>
+                </div>
+                <div class="image-block">
+                    <img src="https://via.placeholder.com/200x200/F8BBD0/E91E63?text=Lampada" alt="Lâmpada">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="container">
+            <div class="powered-by">
+                <img src="https://via.placeholder.com/100x30/E91E63/fff?text=genially" alt="Genially">
+                <p>Powered by <strong>genially</strong></p>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
