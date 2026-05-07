@@ -6,7 +6,7 @@
     <title>Infográfico Interativo - Design Gráfico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- SEÇÃO CSS (ESTILO) --- */
+        
         :root {
             --primary-pink: #E91E63;
             --light-pink: #F8BBD0;
@@ -109,7 +109,7 @@
         .icon-card p.subtitle { color: var(--medium-gray); font-size: 0.95em; margin-bottom: 15px; }
 
         .section-alternating { margin-bottom: 60px; }
-        .alt-tile { display: flex; align-items: center; gap: 50px; margin-bottom: 40px; }
+        .alt-tile { display: flex; align-items: center; gap: 28px; margin-bottom: 28px; }
         .alt-tile.reverse { flex-direction: row-reverse; }
         .alt-image { flex: 1; display: flex; justify-content: center; }
         .alt-image img { max-width: 300px; width: 100%; height: auto; }
@@ -184,10 +184,14 @@
         </div>
     </section>
 
-    <!-- Modal Youtube -->
     <div id="modalYoutube" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;">
         <div style="position: relative; width: 90%; max-width: 800px; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-            <iframe id="videoIframe" src="https://www.youtube.com/watch?v=tFMIFzPix-Q" style="width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="videoIframe" 
+                    src="https://www.youtube.com/embed/tFMIFzPix-Q" 
+                    style="width: 100%; height: 100%; border: none;" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
         </div>
     </div>
 
@@ -231,7 +235,6 @@
         </div>
     </section>
 
-    <!-- Modal Evolução -->
     <div id="modalEvolucao" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;">
         <div style="position: relative; width: 90%; max-width: 1000px; height: 80vh; background: white; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
             <iframe src="https://view.genially.com/67f9c7d276148564366600cf" style="width: 100%; height: 100%; border: none;" allowfullscreen="true"></iframe>
@@ -297,7 +300,6 @@
         </div>
     </section>
 
-    <!-- Modal Universal -->
     <div id="modalUniversal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;">
         <div style="position: relative; width: 450px; height: 800px; max-width: 95%; max-height: 95vh; background: white; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
             <iframe id="iframeModal" src="" style="width: 100%; height: 100%; border: none;" allowfullscreen="true"></iframe>
@@ -338,58 +340,142 @@
         })();
     </script>
 
-    <section class="section-alternating">
-        <div class="container">
-            <div class="alt-tile">
-                <div class="alt-image">
-                    <img src="https://via.placeholder.com/300x250/eee/333?text=Tile+1" alt="Imagem Esquerda">
-                </div>
-                <div class="alt-text">
-                    <h3>UX/UI Design</h3>
-                    <p>O processo de inovação no design gráfico exige uma compreensão profunda do público-alvo. Através de elementos visuais harmoniosos, conseguimos guiar o olhar do usuário e destacar o que realmente importa.</p>
-                    <a href="#" class="info-link">+ info</a>
-                </div>
-            </div>
 
-            <div class="alt-tile reverse">
-                <div class="alt-image">
-                    <img src="https://via.placeholder.com/300x250/eee/333?text=Tile+1" alt="Imagem Direita">
-                </div>
-                <div class="alt-text">
-                    <h3>Processo Criativo</h3>
-                    <p>Desde o esboço inicial até a finalização digital, cada etapa é crucial para garantir que a funcionalidade não seja sacrificada pela estética. O equilíbrio define o sucesso de uma comunicação visual.</p>
-                    <a href="#" class="info-link">+ info</a>
-                </div>
+<section class="section-alternating">
+    <div class="container">
+        <div class="alt-tile" style="display: flex; align-items: center; gap: 20px; margin-bottom: 40px;">
+            <div class="alt-image">
+                <img src="images/uxui.png" alt="UX UI" style="max-width: 300px; width: 100%; height: auto;">
+            </div>
+            <div class="alt-text">
+                <h3>UX/UI Design</h3>
+                <p>O processo de inovação no design gráfico exige uma compreensão profunda do público-alvo. Através de elementos visuais harmoniosos, conseguimos guiar o olhar do usuário e destacar o que realmente importa.</p>
+                <a href="#" class="info-link" id="btnUxNovo">+ info</a>
             </div>
         </div>
-    </section>
 
-    <section class="section-3">
-        <div class="container">
-            <div class="final-card">
-                <div class="text-block">
-                    <h3>O Futuro do Design Gráfico</h3>
-                    <p>A evolução continua. Do papel às telas de alta definição, o design gráfico permanece como a ponte essencial entre a ideia e a compreensão humana.</p>
-                    <a href="#" class="info-link">+ info</a>
-                </div>
-                <div class="image-block">
-                    <img src="images/1.png" alt="Lâmpada">
-                </div>
+        <div class="alt-tile reverse" style="display: flex; align-items: center; gap: 20px; margin-bottom: 40px;">
+            <div class="alt-image">
+                <img src="images/trabalho.png" alt="Mercado" style="max-width: 300px; width: 100%; height: auto;">
+            </div>
+            <div class="alt-text">
+                <h3>Design e Mercado de Trabalho</h3>
+                <p>O design gráfico se tornou uma área essencial para empresas, marcas e mídias digitais. Profissionais da área atuam na criação de identidades visuais, publicidade, redes sociais, interfaces digitais e estratégias de comunicação visual.</p>
+                <a href="#" class="info-link" id="btnMercadoNovo">+ info</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<div id="modalSecaoAlternada" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; justify-content: center; align-items: center; cursor: pointer;">
+    <div style="position: relative; width: 450px; height: 800px; max-width: 95%; max-height: 95vh; background: white; border-radius: 12px; overflow: hidden; cursor: default;">
+        <iframe id="iframeSecaoAlternada" src="" style="width: 100%; height: 100%; border: none;" allowfullscreen="true"></iframe>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const modal = document.getElementById("modalSecaoAlternada");
+        const iframe = document.getElementById("iframeSecaoAlternada");
+        
+        const botoes = {
+            "btnUxNovo": "https://view.genially.com/69fc3b052f13d5d9d5f29122",
+            "btnMercadoNovo": "https://view.genially.com/69fc42252f13d5d9d5f458d0"
+        };
+
+        Object.keys(botoes).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.onclick = function(e) {
+                    e.preventDefault();
+                    iframe.src = botoes[id];
+                    modal.style.display = "flex";
+                    document.body.style.overflow = "hidden";
+                };
+            }
+        });
+
+        modal.onclick = function(e) {
+            if (e.target === modal) fechar();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") fechar();
+        });
+
+        function fechar() {
+            modal.style.display = "none";
+            iframe.src = "";
+            document.body.style.overflow = "auto";
+        }
+    })();
+</script>
+
+<section class="section-3">
+    <div class="container">
+        <div class="final-card">
+            <div class="text-block">
+                <h3>O Futuro do Design Gráfico</h3>
+                <p>A evolução continua. Do papel às telas de alta definição, o design gráfico permanece como a ponte essencial entre a ideia e a compreensão humana.</p>
+                <a href="#" class="info-link" id="btnAbrirVideoFuturo">+ info</a>
+            </div>
+            <div class="image-block">
+                <img src="images/1.png" alt="Lâmpada">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="modalVideoFuturo" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; justify-content: center; align-items: center; cursor: pointer;">
+    <div style="position: relative; width: 90%; max-width: 800px; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+
+        <iframe id="iframeVideoFuturo" 
+                src="" 
+                style="width: 100%; height: 100%; border: none;" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const modal = document.getElementById("modalVideoFuturo");
+        const iframe = document.getElementById("iframeVideoFuturo");
+        const btnAbrir = document.getElementById("btnAbrirVideoFuturo");
+        const urlVideo = "https://www.youtube.com/embed/crfh23z6Nao?si=XmqXw6Nh9eUCwEOu";
+
+        if (btnAbrir) {
+            btnAbrir.onclick = function(e) {
+                e.preventDefault();
+                iframe.src = urlVideo;
+                modal.style.display = "flex";
+                document.body.style.overflow = "hidden";
+            };
+        }
+
+        modal.onclick = function(event) {
+            if (event.target === modal) fecharModal();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape" && modal.style.display === "flex") fecharModal();
+        });
+
+        function fecharModal() {
+            modal.style.display = "none";
+            iframe.src = "";
+            document.body.style.overflow = "auto";
+        }
+    })();
+</script>
 
     <footer>
         <div class="container">
             <div class="powered-by">
                 <img src="images/logo.png" alt="Genially">
                 <p><strong></strong></p>
-            </div>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
