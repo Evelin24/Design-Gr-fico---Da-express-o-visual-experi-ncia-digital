@@ -41,7 +41,6 @@
             padding: 0 20px; 
         }
 
-        /* Cabeçalho Ajustado para Imagem Lateral */
         header {
             background-color: var(--primary-pink);
             color: var(--white);
@@ -69,11 +68,9 @@
         header .header-image img {
             max-width: 100%;
             height: auto;
-            /* Se quiser que a imagem "flutue" um pouco como no original */
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
         }
 
-        /* Seção 1 (Card com Gradiente) */
         .section-1 { margin-top: -60px; margin-bottom: 50px; }
         .tile-card {
             display: flex; 
@@ -95,7 +92,6 @@
         .tile-card h3 { color: var(--dark-gray); margin-bottom: 15px; }
         .tile-card p { color: var(--medium-gray); margin-bottom: 20px; }
 
-        /* Seção 2 (Três Ícones Circulares) */
         .section-2 { margin-bottom: 60px; }
         .icons-grid { display: flex; justify-content: space-between; gap: 30px; }
         .icon-card { flex: 1; text-align: center; }
@@ -112,7 +108,6 @@
         .icon-card h3 { color: var(--dark-gray); font-size: 1.2em; margin-bottom: 10px; }
         .icon-card p.subtitle { color: var(--medium-gray); font-size: 0.95em; margin-bottom: 15px; }
 
-        /* Blocos Alternados com Texto Justificado */
         .section-alternating { margin-bottom: 60px; }
         .alt-tile { display: flex; align-items: center; gap: 50px; margin-bottom: 40px; }
         .alt-tile.reverse { flex-direction: row-reverse; }
@@ -127,7 +122,6 @@
             text-align: justify;
         }
 
-        /* Seção 3 (Card Final) */
         .section-3 { margin-bottom: 50px; }
         .final-card {
             display: flex; background-color: var(--white);
@@ -143,7 +137,6 @@
         }
         .final-card .image-block img { max-width: 80%; }
 
-        /* Rodapé */
         footer { background-color: var(--primary-pink); color: var(--white); padding: 30px 0; }
         footer .container { display: flex; justify-content: space-between; align-items: center; }
         footer .powered-by { display: flex; align-items: center; gap: 10px; }
@@ -151,7 +144,6 @@
         footer .social-icons { display: flex; gap: 15px; }
         footer .social-icons a { color: var(--white); font-size: 1.2em; }
 
-        /* Ajustes de Responsividade */
         @media (max-width: 768px) {
             header .container { flex-direction: column; text-align: center; }
             header .header-image { justify-content: center; margin-top: 30px; }
@@ -172,149 +164,105 @@
                 <p class="subtitle">Como o design molda a comunicação visual no mundo moderno.</p>
             </div>
             <div class="header-image">
-                <!-- Coloque aqui o link da imagem do notebook/pessoas -->
                 <img src="images/imagemtopo.png" alt="Ilustração Cabeçalho">
             </div>
         </div>
     </header>
 
-<!-- Seção do Card -->
-<section class="section-1">
-    <div class="container">
-        <div class="tile-card">
-            <div class="image-block">
-                <img src="images/imagem1.png" alt="Lupa">
-            </div>
-            <div class="text-block">
-                <h3>Muito Além da Estética</h3>
-                <p>O design gráfico está presente em marcas, aplicativos e redes sociais. Mais do que estética, ele transforma ideias em comunicação visual por meio da criatividade e da tecnologia.</p>
-                
-                <!-- Botão com ID específico para o Youtube -->
-                <a href="#" class="info-link" id="btnYoutube">+ info</a>
+    <section class="section-1">
+        <div class="container">
+            <div class="tile-card">
+                <div class="image-block">
+                    <img src="images/imagem1.png" alt="Lupa">
+                </div>
+                <div class="text-block">
+                    <h3>Muito Além da Estética</h3>
+                    <p>O design gráfico está presente em marcas, aplicativos e redes sociais. Mais do que estética, ele transforma ideias em comunicação visual por meio da criatividade e da tecnologia.</p>
+                    <a href="#" class="info-link" id="btnYoutube">+ info</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Estrutura do Modal para Vídeo -->
-<div id="modalYoutube" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;">
-    
-    <div style="position: relative; width: 90%; max-width: 800px; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-        
-        <!-- O link mudou de /youtu.be/ para /youtube.com/embed/ -->
-        <iframe id="videoIframe" 
-                src="https://www.youtube.com/embed/bWdfTkuFqCM" 
-                style="width: 100%; height: 100%; border: none;" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-        </iframe>
-        
-    </div>
-</div>
-
-<script>
-    (function() {
-        const overlay = document.getElementById("modalYoutube");
-        const btnAbrir = document.getElementById("btnYoutube");
-        const iframe = document.getElementById("videoIframe");
-        const originalSrc = iframe.src;
-
-        // Abrir modal
-        btnAbrir.onclick = function(e) {
-            e.preventDefault();
-            overlay.style.display = "flex";
-            document.body.style.overflow = "hidden";
-        }
-
-        // Fechar ao clicar no fundo
-        overlay.onclick = function(event) {
-            if (event.target === overlay) {
-                fecharVideo();
-            }
-        }
-
-        function fecharVideo() {
-            overlay.style.display = "none";
-            document.body.style.overflow = "auto";
-            // Truque para o vídeo parar de tocar ao fechar o modal:
-            iframe.src = "";
-            iframe.src = originalSrc;
-        }
-
-        // Fechar com Esc
-        document.addEventListener('keydown', function(e) {
-            if (e.key === "Escape" && overlay.style.display === "flex") {
-                fecharVideo();
-            }
-        });
-    })();
-</script>
-
-
-
-
-
-<!-- Seção com o Botão -->
-<section class="section-alternating">
-    <div class="container">
-        <div class="alt-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h3>Evolução do Design</h3>
-            <p>A história do design gráfico começou com as primeiras formas de comunicação visual, como símbolos e impressões. Com o passar do tempo, movimentos artísticos, a publicidade e o avanço da tecnologia transformaram o design em uma ferramenta essencial para transmitir informações, ideias e identidade visual.</p>
-            
-            <!-- Botão com ID específico para este modal -->
-            <a href="#" class="info-link" id="btnAbrirEvolucao">+ info</a>
+    <!-- Modal Youtube -->
+    <div id="modalYoutube" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;">
+        <div style="position: relative; width: 90%; max-width: 800px; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            <iframe id="videoIframe" src="https://www.youtube.com/watch?v=tFMIFzPix-Q" style="width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
-</section>
 
-<!-- Estrutura do Modal -->
-<div id="modalEvolucao" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;">
-    <div style="position: relative; width: 90%; max-width: 1000px; height: 80vh; background: white; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-        
-        <!-- Coloquei o link do Genially que você usou anteriormente -->
-        <iframe src="https://view.genially.com/67f9c7d276148564366600cf" 
-                style="width: 100%; height: 100%; border: none;" 
-                allowfullscreen="true">
-        </iframe>
-        
+    <script>
+        (function() {
+            const overlay = document.getElementById("modalYoutube");
+            const btnAbrir = document.getElementById("btnYoutube");
+            const iframe = document.getElementById("videoIframe");
+            const originalSrc = iframe.src;
+
+            btnAbrir.onclick = function(e) {
+                e.preventDefault();
+                overlay.style.display = "flex";
+                document.body.style.overflow = "hidden";
+            }
+
+            overlay.onclick = function(event) {
+                if (event.target === overlay) fecharVideo();
+            }
+
+            function fecharVideo() {
+                overlay.style.display = "none";
+                document.body.style.overflow = "auto";
+                iframe.src = "";
+                iframe.src = originalSrc;
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape" && overlay.style.display === "flex") fecharVideo();
+            });
+        })();
+    </script>
+
+    <section class="section-alternating">
+        <div class="container">
+            <div class="alt-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h3>Evolução do Design</h3>
+                <p>A história do design gráfico começou com as primeiras formas de comunicação visual, como símbolos e impressões. Com o passar do tempo, movimentos artísticos, a publicidade e o avanço da tecnologia transformaram o design em uma ferramenta essencial para transmitir informações, ideias e identidade.</p>
+                <a href="#" class="info-link" id="btnAbrirEvolucao">+ info</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Evolução -->
+    <div id="modalEvolucao" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;">
+        <div style="position: relative; width: 90%; max-width: 1000px; height: 80vh; background: white; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            <iframe src="https://view.genially.com/67f9c7d276148564366600cf" style="width: 100%; height: 100%; border: none;" allowfullscreen="true"></iframe>
+        </div>
     </div>
-</div>
 
-<script>
-    (function() {
-        const overlay = document.getElementById("modalEvolucao");
-        const btnAbrir = document.getElementById("btnAbrirEvolucao");
+    <script>
+        (function() {
+            const overlay = document.getElementById("modalEvolucao");
+            const btnAbrir = document.getElementById("btnAbrirEvolucao");
 
-        // Abrir modal
-        btnAbrir.onclick = function(e) {
-            e.preventDefault();
-            overlay.style.display = "flex";
-            document.body.style.overflow = "hidden";
-        }
-
-        // Fechar ao clicar fora
-        overlay.onclick = function(event) {
-            if (event.target === overlay) {
-                fechar();
+            btnAbrir.onclick = function(e) {
+                e.preventDefault();
+                overlay.style.display = "flex";
+                document.body.style.overflow = "hidden";
             }
-        }
 
-        function fechar() {
-            overlay.style.display = "none";
-            document.body.style.overflow = "auto";
-        }
-
-        // Fechar com Esc
-        document.addEventListener('keydown', function(e) {
-            if (e.key === "Escape" && overlay.style.display === "flex") {
-                fechar();
+            overlay.onclick = function(event) {
+                if (event.target === overlay) fechar();
             }
-        });
-    })();
-</script>
 
+            function fechar() {
+                overlay.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
 
-
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape" && overlay.style.display === "flex") fechar();
+            });
+        })();
+    </script>
 
     <section class="section-2">
         <div class="container">
@@ -323,30 +271,72 @@
                     <div class="icon-circle pink">
                         <img src="images/comunicacaoeficiente.png" alt="Img">
                     </div>
-                    <h3>Comunicação eficiente</h3>
-                    <p class="subtitle">transforma ideias complexas em mensagens visuais claras.</p>
-                    <a href="#" class="info-link">+ info</a>
+                    <h3>Poder da Comunicação</h3>
+                    <p class="subtitle">O design transforma ideias complexas em mensagens visuais claras.</p>
+                    <a href="#" class="info-link btn-modal" data-url="https://view.genially.com/69fbd6e010a7cc00f3254566">+ info</a>
                 </div>
+
                 <div class="icon-card">
                     <div class="icon-circle yellow">
                         <img src="images/cotidiano.png" alt="PC">
                     </div>
                     <h3>Presença no cotidiano</h3>
                     <p class="subtitle">Ele está em aplicativos, redes sociais, embalagens e publicidade.</p>
-                    <a href="#" class="info-link">+ info</a>
+                    <a href="#" class="info-link btn-modal" data-url="https://view.genially.com/69fc18faaf8ea6599bee2adc">+ info</a>
                 </div>
+
                 <div class="icon-card">
                     <div class="icon-circle purple">
                         <img src="images/influencia.png" alt="Click">
                     </div>
                     <h3>Influência digital</h3>
-                    <p class="subtitle">Impacto no comportamento.</p>
-                    <a href="#" class="info-link">+ info</a>
+                    <p class="subtitle">Impacto nas decisões de consumo e percepção de marcas</p>
+                    <a href="#" class="info-link btn-modal" data-url="https://view.genially.com/69fc1d231fc84325fda095a8">+ info</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Modal Universal -->
+    <div id="modalUniversal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer;">
+        <div style="position: relative; width: 450px; height: 800px; max-width: 95%; max-height: 95vh; background: white; border-radius: 12px; overflow: hidden; cursor: default; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            <iframe id="iframeModal" src="" style="width: 100%; height: 100%; border: none;" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const modalUniversal = document.getElementById("modalUniversal");
+            const iframeModal = document.getElementById("iframeModal");
+            const botoesModal = document.querySelectorAll(".btn-modal");
+
+            botoesModal.forEach(botao => {
+                botao.onclick = function(e) {
+                    e.preventDefault();
+                    const urlDestino = this.getAttribute("data-url");
+                    if (urlDestino && !urlDestino.includes("COLE_AQUI")) {
+                        iframeModal.src = urlDestino;
+                        modalUniversal.style.display = "flex";
+                        document.body.style.overflow = "hidden";
+                    }
+                };
+            });
+
+            modalUniversal.onclick = function(event) {
+                if (event.target === modalUniversal) fecharOMoral();
+            };
+
+            function fecharOMoral() {
+                modalUniversal.style.display = "none";
+                iframeModal.src = "";
+                document.body.style.overflow = "auto";
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape" && modalUniversal.style.display === "flex") fecharOMoral();
+            });
+        })();
+    </script>
 
     <section class="section-alternating">
         <div class="container">
@@ -355,7 +345,7 @@
                     <img src="https://via.placeholder.com/300x250/eee/333?text=Tile+1" alt="Imagem Esquerda">
                 </div>
                 <div class="alt-text">
-                    <h3>Inovação Visual</h3>
+                    <h3>UX/UI Design</h3>
                     <p>O processo de inovação no design gráfico exige uma compreensão profunda do público-alvo. Através de elementos visuais harmoniosos, conseguimos guiar o olhar do usuário e destacar o que realmente importa.</p>
                     <a href="#" class="info-link">+ info</a>
                 </div>
@@ -378,24 +368,22 @@
         <div class="container">
             <div class="final-card">
                 <div class="text-block">
-                    <h3>Conclusão e Futuro</h3>
+                    <h3>O Futuro do Design Gráfico</h3>
                     <p>A evolução continua. Do papel às telas de alta definição, o design gráfico permanece como a ponte essencial entre a ideia e a compreensão humana.</p>
                     <a href="#" class="info-link">+ info</a>
                 </div>
                 <div class="image-block">
-                    <img src="https://via.placeholder.com/200x200/F8BBD0/E91E63?text=Lampada" alt="Lâmpada">
+                    <img src="images/1.png" alt="Lâmpada">
                 </div>
             </div>
         </div>
     </section>
 
-
-
     <footer>
         <div class="container">
             <div class="powered-by">
-                <img src="https://via.placeholder.com/100x30/E91E63/fff?text=genially" alt="Genially">
-                <p>Powered by <strong>genially</strong></p>
+                <img src="images/logo.png" alt="Genially">
+                <p><strong></strong></p>
             </div>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -405,6 +393,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
